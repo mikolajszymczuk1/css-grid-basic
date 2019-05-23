@@ -14,9 +14,11 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: [col-line1] 1fr [col-line2] 1fr [col-line3] 1fr [col-line4] 1fr [col-line5];
-    grid-template-rows: [row-line1] 1fr [row-line2] 1fr [row-line3] 1fr [row-line4] 1fr [row-line5] 1fr [row-line6] 1fr [row-line7];
-    height: 100vh
+    grid-template-columns: [col-line1] 1fr [col-line2] 1fr
+                           [col-line3] 1fr [col-line4] 1fr [col-line5];
+    grid-template-rows: [row-line1] 1fr [row-line2] 1fr [row-line3] 4fr [row-line4] 1fr
+                        [row-line5] 2fr [row-line6] 1fr [row-line7] 1fr [row-line8];
+    height: 100vh;
 }
 
 .container div {
@@ -28,43 +30,79 @@ body {
 
 .item1 {
     background-color: red;
-    grid-column: col-line1 / col-line4;
+    grid-column: col-line1 / col-line5;
     grid-row: row-line1 / row-line2;
 }
 
 .item2 {
     background-color: lightgreen;
-    grid-column: col-line1 / col-line4;
+    grid-column: col-line1 / col-line5;
     grid-row: row-line2 / row-line3;
 }
 
 .item3 {
     background-color: orange;
     grid-column: col-line1 / col-line2;
-    grid-row: row-line3 / row-line5;
+    grid-row: row-line3 / row-line8;
 }
 
 .item4 {
     background-color: yellow;
     grid-column: col-line2 / col-line4;
-    grid-row: row-line3 / row-line4;
+    grid-row: row-line3 / row-line7;
 }
 
 .item5 {
     background-color: lightblue;
     grid-column: col-line4 / col-line5;
-    grid-row: row-line1 / row-line5;
+    grid-row: row-line3 / row-line8;
 }
 
 .item6 {
     background-color: purple;
     grid-column: col-line2 / col-line4;
-    grid-row: row-line4 / row-line5;
+    grid-row: row-line7 / row-line8;
 }
 
 /* For mobile styles. */
-@media screen and (max-height: 425px) {
-    .container {
+@media screen and (max-width: 425px) {
+    .container div {
+        grid-column: col-line1 / col-line5;
+    }
 
+    .item3 {
+        grid-row: row-line6 / row-line7;
+    }
+
+    .item4 {
+        grid-row: row-line3 / row-line5;
+    }
+
+    .item5 {
+        grid-row: row-line5 / row-line6;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .item2,
+    .item6 {
+        grid-column: col-line1 / col-line5;
+    }
+
+    .item4,
+    .item5 {
+        grid-column: col-line2 / col-line5;
+    }
+
+    .item3 {
+        grid-row: row-line3 / row-line7;
+    }
+
+    .item4 {
+        grid-row: row-line3 / row-line5;
+    }
+
+    .item5 {
+        grid-row: row-line5 / row-line7;
     }
 }
